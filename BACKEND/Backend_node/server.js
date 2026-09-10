@@ -4,18 +4,18 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Importa as rotas de eventos
-const eventRoutes = require('./routes/eventRoutes');
+// Conecta ao banco
+require('./database/connection');
 
-// Usa as rotas de eventos no servidor
+// Importa rotas
+const eventRoutes = require('./routes/eventRoutes');
 app.use('/events', eventRoutes);
 
-// Rota simples para testar se o servidor está funcionando
 app.get('/', (req, res) => {
     res.send('Servidor CyberFlux está rodando');
 });
 
-// Inicializa o servidor e começa a escutar na porta definida
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
